@@ -4,27 +4,50 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class DealershipFileManager {
-    public static final String
+    public static Dealership getFromCSV(String filename){
 
-    //read from CSV file
-    try{
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(inventory));
 
-        String line;
-        while((line = bufferedReader.readLine()) != null){
+        public static Dealership getFromCSV(String filename){
 
-            if (line.startsWith("D")) {
-                String[] titleArr = line.split("\\|");
+            Dealership dealership = null;
 
-                dealership.setName(titleArr[0]);
-                dealership.setAddress(titleArr[1]);
-                dealership.setPhoneNumber(titleArr[2]);
-            } else {
-                String[] lineArr = line.split("\\|");
+            try{
+                BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+
+                String line;
+
+                String[] firstLineData = bufferedReader.readLine().split("\\|");
+                String name = firstLineData[0];
+                String address = firstLineData[1];
+                String phone = firstLineData[2];
+                dealership = new Dealership(name, address, phone);
+
+                while((line = bufferedReader.readLine()) != null){
+                    String[] newLine = line.split("\\|");
+                    if(newLine.length == 8){
+                        int vinNumber = Integer.parseInt(newLine[0]);
+                        int makeYear = Integer.parseInt(newLine[1]);
+                        String make = newLine[2];
+                        String model = newLine[3];
+                        String vehicleType = newLine[4];
+                        String color = newLine[5];
+                        int odometer = Integer.parseInt(newLine[6]);
+                        double price = Double.parseDouble(newLine[7]);
+                        Vehicle v = new Vehicle(vinNumber, makeYear, make, model, vehicleType, color, odometer, price);
+                        dealership.addVehicleToInventory(v);
+                    }
+                }
+                bufferedReader.close();
+            }catch(Exception e){
+                e.printStackTrace();
             }
+
+            return dealership;
         }
+
+        public static void saveToCSV(String filename){
+
+        }
+
+
     }
-
-
-
-}

@@ -8,37 +8,50 @@ public class Dealership {
     private String address;
     private String phone;
 
-    private <Vehicle> inventory;
+
+    private ArrayList<Vehicle> inventory;
+
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.inventory = new ArrayList<>();
+        this.inventory = new ArrayList<Vehicle>();
     }
 
 
-    public Vehicle getVehicle() List<Vehicle> {
-        return 0;
+    public String getName() {
+        return name;
     }
 
-    public Vehicle getVehiclesByMakeModel() List<Vehicle> {
-        return 0;
-    }
-    public Vehicle getVehicleByYear() List<Vehicle> {
-        return 0;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Vehicle getVehiclesByColor() List<Vehicle> {
-        return 0;
-    }
-    public Vehicle getVehiclesByType() List<Vehicle> {
-        return 0;
+    public String getAddress() {
+        return address;
     }
 
-    public Vehicle getAllVehicles() List<Vehicle> {
-        return 0;
-        String addVehicle(vehicle);
-        String removeVehicle(vehicle)
+    public void setAddress(String address) {
+        this.address = address;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public ArrayList<Vehicle> getInventory() {
+        return inventory;
+    }
+
+    public void addVehicleToInventory(Vehicle vehicleToAdd){
+        inventory.add(vehicleToAdd);
+
+    }
+
+
 }
