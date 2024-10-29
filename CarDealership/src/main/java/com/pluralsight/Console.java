@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.util.Scanner;
+
 public class Console {
 
     static Scanner scanner = new Scanner(System.in);
@@ -67,4 +69,4 @@ public class Console {
         return  userinput;
     }
 }
-}
+

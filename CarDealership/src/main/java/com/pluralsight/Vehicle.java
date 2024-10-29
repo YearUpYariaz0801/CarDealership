@@ -10,6 +10,7 @@ public class Vehicle {
     private int odometer;
     private double price;
 
+
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
         this.vin = vin;
         this.year = year;
@@ -56,7 +57,20 @@ public class Vehicle {
 
     @Override
     public String toString(){
-        return (this.getYear() + " " + this.getMake() + " " + this.getModel() + " [" + this.getColor() + "]");
+       String colorString;
+        if (color.equalsIgnoreCase("Red")){
+            colorString = ColorCodes.RED + color + ColorCodes.RESET;
+        }
+        else if (color.equalsIgnoreCase("White")){
+            colorString = ColorCodes.WHITE + color + ColorCodes.RESET;
+        }
+        else if (color.equalsIgnoreCase("Blue")){
+            colorString = ColorCodes.BLUE + color + ColorCodes.RESET;
+        }
+        else{
+            colorString = color;
+        }
+        return (this.getYear() + " " + this.getMake() + " " + this.getModel() + " [" + colorString + "]");
     }
 
 }

@@ -11,6 +11,9 @@ public class Dealership {
 
     private ArrayList<Vehicle> inventory;
 
+    public Dealership(){
+
+    }
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -53,5 +56,75 @@ public class Dealership {
 
     }
 
+    public void removeVehicleFromInventory(Vehicle vehicleToRemove){
 
+        for(Vehicle v: inventory){
+            if(v.getVin() == vehicleToRemove.getVin()){
+                inventory.remove(vehicleToRemove);
+            }
+        }
+    }
+
+    public ArrayList<Vehicle> getVehiclesByPrice(double min, double max){
+        ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+        for(Vehicle v : this.inventory){
+            if(v.getPrice() >= min && v.getPrice() <= max){
+                result.add(v);
+            }
+        }
+        return result;
+    }
+    public ArrayList<Vehicle> getVehiclesByMilege(double min, double max){
+        ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+        for(Vehicle v : this.inventory){
+            if(v.getPrice() >= min && v.getPrice() <= max){
+                result.add(v);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByType(String type){
+        ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+
+        for(Vehicle v : this.inventory){
+            if(v.getVehicleType().toLowerCase().equals(type.toLowerCase())){
+                result.add(v);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMakeAndModel(String make, String model){
+        ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+        for(Vehicle v : this.inventory){
+            if(v.getMake().toLowerCase().equals(make.toLowerCase()) && v.getModel().toLowerCase().equals(model.toLowerCase())){
+                result.add(v);
+            }
+        }
+        return result;
+    }
+    public ArrayList<Vehicle> getVehiclesByYear(double min, double max){
+        ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+        for(Vehicle v : this.inventory){
+            if(v.getYear() >= min && v.getYear() <= max){
+                result.add(v);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByColor(String color){
+        ArrayList<Vehicle> result = new ArrayList<Vehicle>();
+        for(Vehicle v : this.inventory){
+            if(v.getColor().toLowerCase().equals(color.toLowerCase())){
+                result.add(v);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Vehicle> getAllVehicles() {
+        return this.inventory;
+    }
 }
